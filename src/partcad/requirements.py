@@ -1703,7 +1703,7 @@ async def _verify_package_has(ctx, project, entries) -> None:
     parts, unknown = [], []
     for name in project.object_names("part"):
         try:
-            part = project.get_part(name, quiet=True)
+            part = await project.get_part_async(name, quiet=True)
         except Exception as e:  # pylint: disable=broad-except
             part, why = None, ": %s" % e
         else:
